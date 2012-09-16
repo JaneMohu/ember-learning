@@ -82,11 +82,14 @@ App.Router = Ember.Router.extend({
 			details: Ember.Route.extend({
 				route: '/',
 				connectOutlets: function(router) {
-					router.get('oneContributorController').connectOutlet('details')
+					router.get('oneContributorController').connectOutlet('details');
 				}
 			}),
 			repos: Ember.Route.extend({
-
+				route: '/repos',
+				connectOutlets: function(router) {
+					router.get('oneContributorController').connectOutlet('repos');
+				}
 			})
 		})
 	}),
