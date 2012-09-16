@@ -22,6 +22,22 @@
         <a {{action showAllContributors}}>All Contributors</a>
       </div>
       {{login}} - {{contributions}} contributions to Ember.js
+      <ul>
+        <li><a {{ action showDetails }}>Details</a></li>
+        <li><a {{ action showRepos }}>Repos</a></li>
+      </ul>
+      <div>
+        {{ outlet }}
+      </div>
+    </script>
+    <script type="text/x-handlebars" data-template-name="contributor-details">
+      <p>{{ email }}</p>
+      <p>{{ bio }}</p>
+    </script>
+    <script type="text/x-handlebars" data-template-name="repos">
+      {{#each repo in repos}}
+        {{repo.name}}
+      {{/each}}
     </script>
   </body>
 </html>
