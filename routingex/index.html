@@ -1,15 +1,12 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Ember App</title>
-    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.1/jquery.min.js"></script>
-    <script src="http://cloud.github.com/downloads/wycats/handlebars.js/handlebars-1.0.0.beta.6.js"></script>
-    <script src="http://cloud.github.com/downloads/emberjs/ember.js/ember-latest.js"></script>
-    <script src="js/routing.js"></script>
+    <title>Clifton Clothing Our Range</title>
+    <link rel="stylesheet" type="text/css" href="style.css" />
   </head>
   <body>
   	<script type="text/x-handlebars" data-template-name="app">
-  		<header><h1>Ember Routing Example</h1></header>
+  		<header><h1>Our range</h1></header>
   		{{view App.NavView}}
   		<div id="content">
   			{{outlet}}
@@ -18,43 +15,33 @@
   	<script type="text/x-handlebars" data-template-name="nav">
   		<nav>
   			<ul>
-  				<li><a {{action goA}}>SectionA</a></li>
-  				<li><a {{action goB}}>SectionB</a></li>
+  				<li><a {{action goMen}}>Men</a></li>
+  				<li><a {{action goWomen}}>Women</a></li>
   			</ul>
   		</nav>
   	</script>
-  	<script type="text/x-handlebars" data-template-name="sectionA">
-  		<h2>Section A</h2>
-  		<p>I am section a</p>
-  	</script>
-    <script type="text/x-handlebars" data-template-name="sectionB">
-      <h2>Section B</h2>
-      <p>I am section b</p>
-      {{#each batch in controller}}
-        <p>batch: <a {{action goBatch batch href=true}}>{{batch.name}}</a></p>
-      {{/each}}
-      <a {{action goSubA href="true"}}>sub a</a>
-      <a {{action goSubB href="true"}}>sub b</a>
-      {{outlet}}
+    <script type="text/x-handlebars" data-template-name="men">
+      <h2>Men</h2>
+      {{ view App.SubnavView }}
     </script>
-    <script type="text/x-handlebars" data-template-name="subA">
-      <h2>Sub A</h2>
-      <p>I am sub a</p>
+    <script type="text/x-handlebars" data-template-name="women">
+      <h2>Women</h2>
+      {{ view App.SubnavView }}
     </script>
-    <script type="text/x-handlebars" data-template-name="subB">
-      <h2>Sub B</h2>
-      <p>I am sub b</p>
+    <script type="text/x-handlebars" data-template-name="subnav">
+      <nav class="sub">
+        <ul>
+          <li>Option 1</li>
+          <li>Option 2</li>
+          <li>Option 3</li>
+          <li>Option 4</li>
+        </ul>
+      </nav>
     </script>
-    <script type="text/x-handlebars" data-template-name="batch">
-      <h2>Batch</h2>
-      <p>id:{{id}} name:{{name}}</p>
-      {{#each artwork in artworks}}
-        <p><a {{action goArtwork artwork href=true}}>Artwork {{artwork.name}}</a></p>
-      {{/each}}
-    </script>
-    <script type="text/x-handlebars" data-template-name="artwork">
-      <h1>Artwork</h1>
-      <p>id:{{id}} name:{{name}}</p>
-    </script>
+  	
   </body>
+      <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.1/jquery.min.js"></script>
+    <script src="http://cloud.github.com/downloads/wycats/handlebars.js/handlebars-1.0.0.beta.6.js"></script>
+    <script src="http://cloud.github.com/downloads/emberjs/ember.js/ember-latest.js"></script>
+    <script src="routing.js"></script>
   </html>

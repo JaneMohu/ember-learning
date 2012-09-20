@@ -13,13 +13,17 @@ App.NavView = Em.View.extend({
 });
 
 // Define a controller and view for each page
-App.SectionAController = Em.Controller.extend();
-App.SectionAView = Em.View.extend({
-	templateName: 'sectionA'
+App.MenController = Em.Controller.extend();
+App.MenView = Em.View.extend({
+	templateName: 'men'
 });
-App.SectionBController = Em.ArrayController.extend();
-App.SectionBView = Em.View.extend({
-	templateName: 'sectionB'
+App.WomenController = Em.ArrayController.extend();
+App.WomenView = Em.View.extend({
+	templateName: 'women'
+});
+App.SubnavController = Em.Controller.extend();
+App.SubnavView = Em.View.extend({
+	templateName: 'subnav'
 });
 App.SubAController = Em.Controller.extend();
 App.SubAView = Em.View.extend({
@@ -73,35 +77,37 @@ App.Batch = Em.Object.create({
 // Router
 
 App.Router = Em.Router.extend({
+	enableLogging: true,
 	root: Em.Route.extend({
-		goA: Em.Route.transitionTo('sectionA'),
-		goB: Em.Route.transitionTo('sectionB'),
+		goMen: Em.Route.transitionTo('men'),
+		goWomen: Em.Route.transitionTo('women'),
 		index: Em.Route.extend({
 			route: '/'
 		}),
 
-		sectionA: Em.Route.extend({
-			route: '/sectionA',
+		men: Em.Route.extend({
+			route: '/men',
 			connectOutlets: function(router, context) {
 				router.get('applicationController').connectOutlet({
-					name: 'sectionA'
+					name: 'men'
 				});
+
 			}
 		}),
 
-		sectionB: Em.Route.extend({
+		women: Em.Route.extend({
 			initialState: 'index',
 
 			goSubA: Em.Route.transitionTo('subA'),
 			goSubB: Em.Route.transitionTo('subB'),
 			goBatch: Em.Route.transitionTo('batch'),
 
-			route: '/sectionB',
+			route: '/women',
 
 			index: Em.Route.extend({
 				route: '/',
 				connectOutlets: function(router, context) {
-					router.get('applicationController').connectOutlet('sectionB', App.Batch.find());
+					router.get('applicationController').connectOutlet('women', App.Batch.find());
 				},
 			}),
 
