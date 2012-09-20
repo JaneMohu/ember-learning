@@ -7,31 +7,35 @@
   <body>
   	<script type="text/x-handlebars" data-template-name="app">
   		<header><h1>Our range</h1></header>
-  		<div id="content">
-  			{{outlet}}
-  		</div>
+      <div>
+  		  {{outlet}}
+      </div>
   	</script>
   	<script type="text/x-handlebars" data-template-name="choices">
   		<nav>
   			<ul>
   				{{#each choice in controller}}
             <li>
-              <a {{action showChoice choice href=true}}>{{choice.name}}</a>
+              <a {{action showChoice choice}}>{{choice.name}}</a>
             </li>
           {{/each}}
   			</ul>
   		</nav>
+      <div>
+        {{outlet}}
+      </div>
   	</script>
     <script type="text/x-handlebars" data-template-name="options">
       <nav class="sub">
         <ul>
           {{#each option in controller}}
             <li>
-              <a {{action showOption option href=true}}>{{option.name}}</a>
+              <a {{action showOption option}}>{{option.name}}</a>
             </li>
           {{/each}}
         </ul>
       </nav>
+
     </script>
     <script type="text/x-handlebars" data-template-name="products">
       <nav class="matrix">

@@ -102,18 +102,21 @@ App.Router = Em.Router.extend({
 			redirectsTo: 'choices'
 		}),
 		choices: Em.Route.extend({
-			route: '/choices',
-			showChoice: Em.Route.transitionTo('choice'),
-			connectOutlets: function(router) {
-				router.get('applicationController').connectOutlet('choices', App.Choice.find());
-			}
-		}),
-		choice: Em.Route.extend({
-			route: '/choices/:name',
-			showOption: Em.Route.transitionTo('option'),
-			connectOutlets: function(router) {
-				router.get('applicationController').connectOutlet('options', App.Option.find());
-			}
+			initialState: 'index',
+			index: Em.Route.extend({
+				route: '/choices',
+				showChoice: Em.Route.transitionTo('choice'),
+				connectOutlets: function(router) {
+					router.get('applicationController').connectOutlet('choices', App.Choice.find());
+				}
+			}),
+			choice: Em.Route.extend({
+				route: '/choices/:name',
+				showOption: Em.Route.transitionTo('option'),
+				connectOutlets: function(router) {
+					router.get('applicationController').connectOutlet('options', App.Option.find());
+				}
+			})
 		}),
 		option: Em.Route.extend({
 			route: '/options/:name',
